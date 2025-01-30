@@ -66,7 +66,7 @@ class UserResource extends Resource
                 ->label(trans('filament-users::user.resource.name')),
             TextInput::make('phone')
                 ->required()
-                ->label(trans('filament-users::user.resource.phone')),
+                ->label('رقم الهاتف'),
             TextInput::make('email')
                 ->email()
                 ->required()
@@ -111,6 +111,7 @@ class UserResource extends Resource
                     ->searchable()
                     ->label(trans('filament-users::user.resource.name')),
                 TextColumn::make('email')
+                     ->copyable()
                     ->sortable()
                     ->searchable()
                     ->label(trans('filament-users::user.resource.email')),
