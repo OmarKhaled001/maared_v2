@@ -19,7 +19,7 @@
                                 <div class="card-header">
                                     <h4 class="card-title">الاحداث</h4>
                                 </div>
-                                @if (Request::url() == route('events.week5'))
+                                @if (Request::url() == route('events.all'))
                                     <!-- Base Example -->
                                     <div class="accordion" id="default-accordion-example">
                                         <div class="accordion-item">
