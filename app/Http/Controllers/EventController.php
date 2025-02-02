@@ -22,8 +22,22 @@ class EventController extends Controller
 
     public function filter (Request $request)
     {
-        
-        $events = Event::paginate(25);
+        $text = $request->input('text');
+        $eventDateFrom = $request->input('event_date_from');
+        $eventDateTo = $request->input('event_date_to');
+
+        $events = Event::when($eventDateFrom, function ($query) use ($eventDateFrom) {
+                $query->whereDate('event_date', '>=', $eventDateFrom);
+            })
+            ->when($eventDateTo, function ($query) use ($eventDateTo) {
+                $query->whereDate('event_date', '<=', $eventDateTo);
+            })
+            ->when($text, function ($query) use ($text) {
+                $query->where('type',  $text);
+            })
+          
+            ->orderBy('created_at', 'desc') // ترتيب من الأحدث إلى الأقدم
+            ->paginate(25);
         return view('events.week',[
             'events' => $events,
         ]);

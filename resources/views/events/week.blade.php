@@ -34,18 +34,27 @@
                                                 aria-labelledby="headingOne"
                                                 data-bs-parent="#default-accordion-example">
                                                 <div class="accordion-body">
+                                                    <form action="{{ route('event.filter') }}" method="post">
+                                                        @csrf
                                                     <div class="my-2">
                                                         <label for="placeholderInput" class="form-label">ابحث</label>
-                                                        <input type="text" class="name" id="placeholderInput" placeholder="ابحث عن الحدث">
+                                                        <input type="text" class="form-input" name="text" placeholder="ابحث عن الحدث">
                                                     </div>                                               
                                                     <div class="my-2">
-                                                        <label for="placeholderInput" class="form-label">:من تاريخ</label>
-                                                        <input type="date" class="date_from" id="placeholderInput">
-                                                    </div>                                               
-                                                    <div class="my-2">
-                                                        <label for="placeholderInput" class="form-label">الي تاريخ :</label>
-                                                        <input type="date" class="date_to" id="placeholderInput" >
-                                                    </div>                                               
+                                                        <label>من:</label>
+                                                        <div>
+                                                            <input class="form-input" name="event_date_from" placeholder="اختر تاريخ البداية" value="{{ old('event_date_from', request('event_date_from')) }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-3">
+                                                        <label>إلى:</label>
+                                                        <div>
+                                                            <input class="form-input" name="event_date_to" placeholder="اختر تاريخ النهاية" value="{{ old('event_date_to', request('event_date_to')) }}">
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary" >فلتر</button>
+
+                                                    </form>                                             
                                                  </div>
                                             </div>
                                         </div>
