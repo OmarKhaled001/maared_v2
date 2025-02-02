@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Carbon\Carbon;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch;
 
@@ -30,5 +31,7 @@ class AppServiceProvider extends ServiceProvider
         Carbon::setLocale('ar');
         Carbon::setWeekStartsAt(Carbon::SATURDAY); // الأسبوع يبدأ من السبت
         Carbon::setWeekEndsAt(Carbon::FRIDAY); // وينتهي بالجمعة
+        Paginator::useBootstrap();
+
     }
 }
