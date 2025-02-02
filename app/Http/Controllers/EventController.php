@@ -14,17 +14,12 @@ class EventController extends Controller
 
     public function all ()
     {
-        
-
-
-        $events = Event::all();
-
-
-        
+        $events = Event::paginate(25);
         return view('events.week',[
             'events' => $events,
         ]);
     }
+
     public function eventsWeek1 ()
     {
         
