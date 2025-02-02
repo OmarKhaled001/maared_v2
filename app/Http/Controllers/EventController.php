@@ -20,6 +20,15 @@ class EventController extends Controller
         ]);
     }
 
+    public function filter (Request $request)
+    {
+        
+        $events = Event::paginate(25);
+        return view('events.week',[
+            'events' => $events,
+        ]);
+    }
+
     public function eventsWeek1 ()
     {
         

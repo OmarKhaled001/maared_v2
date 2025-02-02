@@ -34,11 +34,19 @@
                                                 aria-labelledby="headingOne"
                                                 data-bs-parent="#default-accordion-example">
                                                 <div class="accordion-body">
-                                                    Although you probably won’t get into any legal trouble if you do it
-                                                    just once, why risk it? If you made your subscribers a promise, you
-                                                    should honor that. If not, you run the risk of a drastic increase in
-                                                    opt outs, which will only hurt you in the long run.
-                                                </div>
+                                                    <div class="my-2">
+                                                        <label for="placeholderInput" class="form-label">ابحث</label>
+                                                        <input type="text" class="name" id="placeholderInput" placeholder="ابحث عن الحدث">
+                                                    </div>                                               
+                                                    <div class="my-2">
+                                                        <label for="placeholderInput" class="form-label">:من تاريخ</label>
+                                                        <input type="date" class="date_from" id="placeholderInput">
+                                                    </div>                                               
+                                                    <div class="my-2">
+                                                        <label for="placeholderInput" class="form-label">الي تاريخ :</label>
+                                                        <input type="date" class="date_to" id="placeholderInput" >
+                                                    </div>                                               
+                                                 </div>
                                             </div>
                                         </div>
                                     </div>
