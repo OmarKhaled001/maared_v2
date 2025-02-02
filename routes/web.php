@@ -37,14 +37,14 @@ Route::group(['middleware' => ['admin','auth']],function () {
     Route::get('master/events/week4'         ,[EventController::class,'eventsWeek4'])->name('events.week4');
     Route::get('master/events/week5'         ,[EventController::class,'eventsWeek5'])->name('events.week5');
     Route::get('master/events/contributions' ,[EventController::class,'contribution'])->name('events.contribution');
-    Route::get('master/events/meetings' ,[EventController::class,'eventsMeeting'])->name('events.meeting');
-    Route::get('master/events/maared' ,[EventController::class,'eventsMaared'])->name('events.maared');
-    Route::get('master/events/etaam' ,[EventController::class,'eventsEtaam'])->name('events.etaam');
-    Route::get('master/events/driver' ,[EventController::class,'eventsDriver'])->name('events.driver');
-    Route::get('master/vol/masaol' ,[TeamController::class,'MasaolTeam'])->name('team.masaol');
-    Route::get('master/vol/mmasaol' ,[TeamController::class,'MmasaolTeam'])->name('team.mmasaol');
-    Route::get('master/vol/new' ,[TeamController::class,'new'])->name('team.new');
-    Route::get('master/vol/birthdate' ,[TeamController::class,'birthdate'])->name('team.birthdate');
+    Route::get('master/events/meetings'      ,[EventController::class,'eventsMeeting'])->name('events.meeting');
+    Route::get('master/events/maared'        ,[EventController::class,'eventsMaared'])->name('events.maared');
+    Route::get('master/events/etaam'         ,[EventController::class,'eventsEtaam'])->name('events.etaam');
+    Route::get('master/events/driver'        ,[EventController::class,'eventsDriver'])->name('events.driver');
+    Route::get('master/vol/masaol'           ,[TeamController::class,'MasaolTeam'])->name('team.masaol');
+    Route::get('master/vol/mmasaol'          ,[TeamController::class,'MmasaolTeam'])->name('team.mmasaol');
+    Route::get('master/vol/new'              ,[TeamController::class,'new'])->name('team.new');
+    Route::get('master/vol/birthdate'        ,[TeamController::class,'birthdate'])->name('team.birthdate');
 });
 
 
