@@ -34,7 +34,7 @@
                                                 aria-labelledby="headingOne"
                                                 data-bs-parent="#default-accordion-example">
                                                 <div class="accordion-body">
-                                                    <form action="{{ route('event.filter') }}" method="post">
+                                                    <form action="{{ route('events.filter') }}" method="post">
                                                         @csrf
                                                     <div class="my-2">
                                                         <label for="placeholderInput" class="form-label">ابحث</label>
