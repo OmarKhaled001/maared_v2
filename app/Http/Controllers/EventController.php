@@ -33,7 +33,7 @@ class EventController extends Controller
                 $query->whereDate('created_at', '<=', $eventDateTo);
             })
             ->when($text, function ($query) use ($text) {
-                $query->where('text',  $text);
+                $query->where('type',  $text);
             })
           
             ->orderBy('created_at', 'desc') // ترتيب من الأحدث إلى الأقدم
