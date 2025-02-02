@@ -34,11 +34,28 @@
                                                 aria-labelledby="headingOne"
                                                 data-bs-parent="#default-accordion-example">
                                                 <div class="accordion-body">
-                                                    Although you probably won’t get into any legal trouble if you do it
-                                                    just once, why risk it? If you made your subscribers a promise, you
-                                                    should honor that. If not, you run the risk of a drastic increase in
-                                                    opt outs, which will only hurt you in the long run.
-                                                </div>
+                                                    <form action="{{ route('event.filter') }}" method="post">
+                                                        @csrf
+                                                    <div class="my-2">
+                                                        <label for="placeholderInput" class="form-label">ابحث</label>
+                                                        <input type="text" class="form-input" name="text" placeholder="ابحث عن الحدث">
+                                                    </div>                                               
+                                                    <div class="my-2">
+                                                        <label>من:</label>
+                                                        <div>
+                                                            <input class="form-input" name="event_date_from" placeholder="اختر تاريخ البداية" value="{{ old('event_date_from', request('event_date_from')) }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-3">
+                                                        <label>إلى:</label>
+                                                        <div>
+                                                            <input class="form-input" name="event_date_to" placeholder="اختر تاريخ النهاية" value="{{ old('event_date_to', request('event_date_to')) }}">
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary" >فلتر</button>
+
+                                                    </form>                                             
+                                                 </div>
                                             </div>
                                         </div>
                                     </div>
@@ -91,7 +108,9 @@
 
                                         </table>
                                     </div>
+                                    @if (Request::url() == route('events.all'))
                                     {{ $events->links() }}
+                                    @endif
                                 </div><!-- end card-body -->
                             </div><!-- end card -->
                         </div>
