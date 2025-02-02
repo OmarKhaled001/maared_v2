@@ -78,7 +78,9 @@
                                         
                                     </table>
                                 </div>
+                                {{ $events->links() }}
                             </div><!-- end card-body -->
+
                           </div><!-- end card -->
                         </div>
                     

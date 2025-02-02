@@ -57,6 +57,7 @@
                                     </table>
                                 </div>
                             </div><!-- end card-body -->
+                            {{ $events->links() }}
                           </div><!-- end card -->
                         </div>
                     
