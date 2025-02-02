@@ -30,26 +30,23 @@
                                                     فلتر
                                                 </button>
                                             </h2>
-                                            <div id="collapseOne" class="accordion-collapse collapse show"
+                                            <div id="collapseOne" class="accordion-collapse collapse "
                                                 aria-labelledby="headingOne"
                                                 data-bs-parent="#default-accordion-example">
                                                 <div class="accordion-body">
                                                     <form action="{{ route('events.filter') }}" method="post">
                                                         @csrf
                                                     <div class="my-2">
-                                                        <label for="placeholderInput" class="form-label">ابحث</label>
-                                                        <input type="text" class="form-controller" name="text" placeholder="ابحث عن الحدث">
+                                                        <input type="text" class="form-control" name="text" placeholder="ابحث عن الحدث">
                                                     </div>                                               
                                                     <div class="my-2">
-                                                        <label>من:</label>
                                                         <div>
-                                                            <input class="form-controller" name="event_date_from" placeholder="اختر تاريخ البداية" value="{{ old('event_date_from', request('event_date_from')) }}">
+                                                            <input type="date" class="form-control" name="event_date_from" placeholder="اختر تاريخ البداية" value="{{ old('event_date_from', request('event_date_from')) }}">
                                                         </div>
                                                     </div>
                                                     <div class="my-3">
-                                                        <label>إلى:</label>
                                                         <div>
-                                                            <input class="form-controller" name="event_date_to" placeholder="اختر تاريخ النهاية" value="{{ old('event_date_to', request('event_date_to')) }}">
+                                                            <input type="date" class="form-control" name="event_date_to" placeholder="اختر تاريخ النهاية" value="{{ old('event_date_to', request('event_date_to')) }}">
                                                         </div>
                                                     </div>
                                                     <button type="submit" class="btn btn-primary" >فلتر</button>
