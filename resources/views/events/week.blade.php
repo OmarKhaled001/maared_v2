@@ -19,7 +19,7 @@
                                 <div class="card-header">
                                     <h4 class="card-title">الاحداث</h4>
                                 </div>
-                                @if (Request::url() == route('events.all'))
+                                @if (Request::url() == route('events.all') or route('events.filter'))
                                     <!-- Base Example -->
                                     <div class="accordion" id="default-accordion-example">
                                         <div class="accordion-item">
@@ -105,7 +105,7 @@
 
                                         </table>
                                     </div>
-                                    @if (Request::url() == route('events.all'))
+                                    @if (Request::url() == route('events.all') or route('events.filter'))
                                     {{ $events->links() }}
                                     @endif
                                 </div><!-- end card-body -->
