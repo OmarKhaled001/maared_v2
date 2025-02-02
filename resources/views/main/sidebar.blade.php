@@ -45,6 +45,9 @@
                         <div class="collapse menu-dropdown" id="week">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
+                                    <a class="nav-link menu-link {{Request::url() == route('events.all')? 'active': ''}}" href="{{route("events.all")}}">كل المشاركات</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link menu-link {{Request::url() == route('events.week1')? 'active': ''}}" href="{{route("events.week1")}}">الاسبوع الاول</a>
                                 </li>
                                 <li class="nav-item">

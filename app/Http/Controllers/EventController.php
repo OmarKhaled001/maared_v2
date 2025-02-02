@@ -12,6 +12,19 @@ use Yajra\DataTables\Facades\DataTables;
 class EventController extends Controller
 {
 
+    public function all ()
+    {
+        
+
+
+        $events = Event::all();
+
+
+        
+        return view('events.week',[
+            'events' => $events,
+        ]);
+    }
     public function eventsWeek1 ()
     {
         
