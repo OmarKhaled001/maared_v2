@@ -27,13 +27,13 @@ class EventController extends Controller
         $eventDateTo = $request->input('event_date_to');
 
         $events = Event::when($eventDateFrom, function ($query) use ($eventDateFrom) {
-                $query->whereDate('event_date', '>=', $eventDateFrom);
+                $query->whereDate('created_at', '>=', $eventDateFrom);
             })
             ->when($eventDateTo, function ($query) use ($eventDateTo) {
-                $query->whereDate('event_date', '<=', $eventDateTo);
+                $query->whereDate('created_at', '<=', $eventDateTo);
             })
             ->when($text, function ($query) use ($text) {
-                $query->where('type',  $text);
+                $query->where('text',  $text);
             })
           
             ->orderBy('created_at', 'desc') // ترتيب من الأحدث إلى الأقدم
