@@ -41,11 +41,14 @@
                                                     </div>                                               
                                                     <div class="my-2">
                                                         <div>
+                                                            <label for="">من</label>
                                                             <input type="date" class="form-control" name="event_date_from" placeholder="اختر تاريخ البداية" value="{{ old('event_date_from', request('event_date_from')) }}">
                                                         </div>
                                                     </div>
                                                     <div class="my-3">
                                                         <div>
+                                                            <label for="">الي</label>
+
                                                             <input type="date" class="form-control" name="event_date_to" placeholder="اختر تاريخ النهاية" value="{{ old('event_date_to', request('event_date_to')) }}">
                                                         </div>
                                                     </div>
