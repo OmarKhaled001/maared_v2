@@ -91,7 +91,9 @@
 
                                         </table>
                                     </div>
+                                    @if (Request::url() == route('events.all'))
                                     {{ $events->links() }}
+                                    @endif
                                 </div><!-- end card-body -->
                             </div><!-- end card -->
                         </div>
