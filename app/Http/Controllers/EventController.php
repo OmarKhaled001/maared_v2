@@ -38,7 +38,7 @@ class EventController extends Controller
             })
           
             ->orderBy('created_at', 'desc') // ترتيب من الأحدث إلى الأقدم
-            ->paginate(25);
+            ->paginate(100);
         return view('events.week',[
             'events' => $events,
         ]);
