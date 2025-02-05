@@ -172,78 +172,63 @@ class EventController extends Controller
     }
 
     public function contribution() {
+    $currentYear = now()->year;
+    $volunteers = Volunteer::with(['contributions' => function ($query) use ($currentYear) {
+        $query->where('year', $currentYear)->where('month', 1); // حساب شهر يناير فقط
+    }])->get();
 
-    
-        $currentYear = now()->year;
-        
-        $currentMonth = now()->month;
+    foreach ($volunteers as $volunteer) {
+        $events = $volunteer->events;
+        if ($events != null) {
+            foreach ($events as $event) {
+                $day = Carbon::create($event->date)->format('d');
+                $month = Carbon::create($event->date)->format('m');
+                $year = Carbon::create($event->date)->format('Y');
 
-        $volunteers = Volunteer::with(['contributions' => function ($query) use ($currentYear, $currentMonth) {
-            $query->where('year', $currentYear)->where('month', $currentMonth);
-        }])->get();
-       
-        foreach( $volunteers as $volunteer){
-            $events = $volunteer->events;
-                        if($events != null){
-                // get all contribution
-                foreach ($events as $event) {
-                    $day = Carbon::create($event->date)->format('d');
-                    $month = Carbon::create($event->date)->format('m');
-                    $year= Carbon::create($event->date)->format('Y');
-                    $contribution = Contribution::where('volunteer_id',$volunteer->id)
-                    ->where('year', $year)
-                    ->where('month', $month)
-                    ->get()
-                    ->first();
-                    if($contribution != null){
-                        $contribution->year = $year;
-                        $contribution->month = $month;
+                if ($month == 1) { // تأكد من أن الحدث يقع في يناير
+                    $contribution = Contribution::where('volunteer_id', $volunteer->id)
+                        ->where('year', $year)
+                        ->where('month', $month)
+                        ->first();
+
+                    if ($contribution != null) {
                         $contribution->$day = 1;
                         $contribution->save();
-                    }else{
+                    } else {
                         $contribution = new Contribution;
-                        $contribution->volunteer_id =$volunteer->id;
+                        $contribution->volunteer_id = $volunteer->id;
                         $contribution->year = $year;
                         $contribution->month = $month;
                         $contribution->$day = 1;
                         $contribution->save();
                     }
                 }
-                if (count($volunteer->contributions)>0){
-                    $total = 0;
-                    $contribution = $volunteer->contributions->first();
-                    for ($i = 1; $i <= 31; $i++){
-        
-                        $day = str_pad($i, 2, '0', STR_PAD_LEFT);
-                        if ($contribution->$day != null){
-                           $total += 1; 
-                        }
-                    }
-                    $contribution->total = $total; 
-    
-                    $contribution->save();
-                }
-            }else{
-                $contribution = $volunteer->contributions->first();
-                if ($contribution) {
-                    $contribution->delete();
-                }
-                
-
             }
 
-
+            if (count($volunteer->contributions) > 0) {
+                $total = 0;
+                $contribution = $volunteer->contributions->first();
+                for ($i = 1; $i <= 31; $i++) {
+                    $day = str_pad($i, 2, '0', STR_PAD_LEFT);
+                    if ($contribution->$day != null) {
+                        $total += 1;
+                    }
+                }
+                $contribution->total = $total;
+                $contribution->save();
+            }
+        } else {
+            $contribution = $volunteer->contributions->first();
+            if ($contribution) {
+                $contribution->delete();
+            }
         }
-
-
-    
- 
-        return view('events.contributions',[
-            'volunteers' => $volunteers,
-      
-        ]);
-
     }
+
+    return view('events.contributions', [
+        'volunteers' => $volunteers,
+    ]);
+}
 
     
 
