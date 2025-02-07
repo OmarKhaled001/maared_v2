@@ -108,7 +108,7 @@
 
                                         </table>
                                     </div>
-                                    @if (Request::url() == route('events.all') or route('events.filter'))
+                                    @if (Request::url() == route('events.all') or Request::url() == route('events.filter'))
                                     {{ $events->links() }}
                                     @endif
                                 </div><!-- end card-body -->
