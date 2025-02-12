@@ -76,11 +76,12 @@ class AdminPanelProvider extends PanelProvider
                 ->name(text: fn() => auth()->user()->name .'😡')
                 ->title('خليك شاطر وسجل مشاركاتك في يومها ومتتعبناش كتير😡 ومتنساش تصلِ علي النبي 🥰 وتدعيي لعمر خالد ياخد اعفا من الجيش🤗')
                 ->sort(-99),
-                ActivitylogPlugin::make()
+                // ActivitylogPlugin::make()
                 
-                ->navigationIcon('heroicon-o-shield-check')->authorize(
-                    fn () => auth()->user()->is_admin === 1
-                ),FilamentShieldPlugin::make(),
+                // ->navigationIcon('heroicon-o-shield-check')->authorize(
+                //     fn () => auth()->user()->is_admin === 1
+                // ),
+                FilamentShieldPlugin::make(),
                 FilamentApexChartsPlugin::make()
 
             ])
