@@ -65,49 +65,48 @@ class EventResource extends Resource
                         ->label('تاريخ الحدث')
                         
                     ->required(),
-    
                     Select::make('volunteer_id')
-                        ->createOptionForm([
-                            TextInput::make('name')
-                                ->label('الاسم')
-                                ->placeholder('ادخل اسم المتطوع')
-                                ->required()
-                                ,
-                                TextInput::make('phone')
-                                ->label('رقم الهاتف')
-                                ->placeholder('ادخل رقم المتطوع')
-                                ->required()
-                                ,
-                                Select::make('gender')
-                                ->options([
-                                    '1' => 'ذكر',
-                                    '2' => 'انثي',
-                                ])->label('النوع')
-                                ->required()
-                                ->placeholder('اختر النوع'),
-                                DatePicker::make('birthdate')
-                                ->displayFormat('d/m/y')
-                                ->required()
-                                ->label('تاريخ الميلاد'),
-                                DatePicker::make('voldate')
-                                ->displayFormat('d/m/y')
-                                ->required()
-                                ->label('تاريخ التطوع'),
-                        ])
-                        ->relationship('volunteers', 'name')
-                        ->label('أسم المتطوع')
-                        ->placeholder('اختر اسماءالمتطوعين')
-                        ->searchable(['name', 'phone', 'status'])
-                        ->multiple()
-                        ->required()
-                        ->options(function ($query) {
-                            return $query->get()->mapWithKeys(function ($volunteer) {
-                                return [
-                                    'label' => "{$volunteer->name} - {$volunteer->phone} - {$volunteer->status} ",
-                                    'value' => $volunteer->id,
-                                ];
-                            })->toArray();
-                        }),
+                    ->createOptionForm([
+                        TextInput::make('name')
+                            ->label('الاسم')
+                            ->placeholder('ادخل اسم المتطوع')
+                            ->required(),
+                        TextInput::make('phone')
+                            ->label('رقم الهاتف')
+                            ->placeholder('ادخل رقم المتطوع')
+                            ->required(),
+                        Select::make('gender')
+                            ->options([
+                                '1' => 'ذكر',
+                                '2' => 'انثي',
+                            ])
+                            ->label('النوع')
+                            ->required()
+                            ->placeholder('اختر النوع'),
+                        DatePicker::make('birthdate')
+                            ->displayFormat('d/m/y')
+                            ->required()
+                            ->label('تاريخ الميلاد'),
+                        DatePicker::make('voldate')
+                            ->displayFormat('d/m/y')
+                            ->required()
+                            ->label('تاريخ التطوع'),
+                    ])
+                    ->relationship('volunteers', 'name')
+                    ->label('أسم المتطوع')
+                    ->placeholder('اختر اسماءالمتطوعين')
+                    ->searchable(['name', 'phone', 'status'])
+                    ->multiple()
+                    ->required()
+                    ->options(function ($query) {
+                        // Explicitly define the query parameter
+                        return $query->get()->mapWithKeys(function ($volunteer) {
+                            return [
+                                'label' => "{$volunteer->name} - {$volunteer->phone} - {$volunteer->status}",
+                                'value' => $volunteer->id,
+                            ];
+                        })->toArray();
+                    }),
     
                     Select::make('type')
                         ->options([
