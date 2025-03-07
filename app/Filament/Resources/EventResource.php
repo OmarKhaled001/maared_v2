@@ -100,8 +100,8 @@ class EventResource extends Resource
                         ->searchable(['name', 'phone', 'status'])
                         ->multiple()
                         ->required()
-                        ->resolveUsing(function ($value, $model) {
-                            return $model->volunteers->map(function ($volunteer) {
+                        ->options(function ($query) {
+                            return $query->get()->mapWithKeys(function ($volunteer) {
                                 return [
                                     'label' => "{$volunteer->name} - {$volunteer->phone} - {$volunteer->status} ",
                                     'value' => $volunteer->id,
