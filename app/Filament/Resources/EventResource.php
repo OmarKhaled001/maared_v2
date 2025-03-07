@@ -94,7 +94,9 @@ class EventResource extends Resource
                                 ->required()
                                 ->label('تاريخ التطوع'),
                         ])
-                        ->relationship('volunteers','name')
+                        ->relationship('volunteers', function ($query) {
+                            return $query->selectRaw("CONCAT(name, ' - ', phone, ' - ',status) as name");
+                        })
                         ->label('أسم المتطوع')
                         ->placeholder('اختر اسماءالمتطوعين')
                         ->searchable(['name', 'phone','status'])
